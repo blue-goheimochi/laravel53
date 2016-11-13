@@ -6,8 +6,8 @@ use App\Repositories\UserRepositoryInterface;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Http\Requests\UserRegisterRequest;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Auth\AuthManager;
 
 class RegisterController extends Controller
 {
@@ -31,6 +31,9 @@ class RegisterController extends Controller
      */
     protected $redirectTo = '/';
 
+    /** @var AuthManager */
+    protected $auth;
+
     /** @var UserRepositoryInterface */
     protected $user;
 
@@ -39,9 +42,10 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct(UserRepositoryInterface $user)
+    public function __construct(AuthManager $auth, UserRepositoryInterface $user)
     {
         $this->middleware('guest');
+        $this->auth = $auth;
         $this->user = $user;
     }
 
@@ -49,15 +53,10 @@ class RegisterController extends Controller
     {
         event(new Registered($user = $this->create($request->all())));
 
-        $this->guard()->login($user);
+        $this->auth->guard()->login($user);
 
         return $this->registered($request, $user)
             ?: redirect($this->redirectPath());
-    }
-
-    protected function guard()
-    {
-        return Auth::guard();
     }
 
     /**
