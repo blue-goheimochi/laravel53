@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
 /*!
  * Bootstrap v4.0.0-alpha.4 (http://getbootstrap.com)
@@ -4732,5 +4733,73 @@ a.text-danger:focus, a.text-danger:hover {
 @media print {
   .hidden-print {
     display: none !important; } }
+
+body {
+  padding-top: 70px;
+  font-family: 'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',Arial, Helvetica, sans-serif; }
+
+@media (max-width: 540px) {
+  .navbar {
+    padding-left: 0;
+    padding-right: 0; }
+  .navbar-header {
+    padding-left: 1rem;
+    padding-right: 0.5rem; }
+  .navbar-menu {
+    margin-top: 9px;
+    width: 100%;
+    background: #373a3c;
+    clear: both; }
+  .navbar-nav .nav-item {
+    width: 100%;
+    padding: 0 1.5rem 0.5rem;
+    display: block; }
+  .navbar-nav .nav-item:first-child {
+    padding-top: 0.5rem; }
+  .navbar-light .navbar-nav .nav-link {
+    color: #CCCCCC; } }
+
+#register, #login {
+  background: #EDEDED;
+  padding-top: 80px; }
+
+#register .form-wrap {
+  max-width: 450px;
+  padding: 25px 40px;
+  margin: 0 auto;
+  background: #FFFFFF; }
+
+#login .form-wrap {
+  max-width: 350px;
+  padding: 25px;
+  margin: 0 auto;
+  background: #FFFFFF; }
+
+#register .form-signin-heading, #login .form-signin-heading {
+  text-align: center;
+  margin: 10px 0 25px; }
+
+#register .form-wrap label.input-label {
+  font-weight: bold;
+  font-size: 0.8em; }
+
+#register .form-wrap .form-control {
+  padding: 13px;
+  margin-bottom: 10px;
+  border: none;
+  border: 1px solid #CCCCCC;
+  position: relative;
+  height: auto; }
+
+#login .form-wrap .form-control {
+  padding: 13px;
+  margin-bottom: 25px;
+  border: none;
+  border-bottom: 1px solid #CCCCCC;
+  position: relative;
+  height: auto; }
+
+#register .btn-register, #login .btn-login {
+  margin-top: 25px; }
 
 /*# sourceMappingURL=app.css.map */

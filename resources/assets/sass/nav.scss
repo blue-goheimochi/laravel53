@@ -1,0 +1,27 @@
+@media (max-width: 540px) {
+  .navbar {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .navbar-header {
+    padding-left: 1rem;
+    padding-right: 0.5rem;
+  }
+  .navbar-menu {
+    margin-top: 9px;
+    width: 100%;
+    background: #373a3c;
+    clear: both;
+  }
+  .navbar-nav .nav-item {
+    width: 100%;
+    padding: 0 1.5rem 0.5rem;
+    display: block;
+  }
+  .navbar-nav .nav-item:first-child {
+    padding-top: 0.5rem;
+  }
+  .navbar-light .navbar-nav .nav-link {
+    color: #CCCCCC;
+  }
+}
