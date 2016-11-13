@@ -4759,7 +4759,7 @@ body {
   .navbar-light .navbar-nav .nav-link {
     color: #CCCCCC; } }
 
-#register, #login {
+#register, #login, #password-forgot, #password-reset {
   background: #EDEDED;
   padding-top: 80px; }
 
@@ -4769,21 +4769,24 @@ body {
   margin: 0 auto;
   background: #FFFFFF; }
 
-#login .form-wrap {
+#login .form-wrap, #password-forgot .form-wrap, #password-reset .form-wrap {
   max-width: 350px;
   padding: 25px;
   margin: 0 auto;
   background: #FFFFFF; }
 
-#register .form-signin-heading, #login .form-signin-heading {
+#register .form-signin-heading, #login .form-signin-heading, #password-forgot .form-signin-heading, #password-reset .form-signin-heading {
   text-align: center;
   margin: 10px 0 25px; }
 
-#register .form-wrap label.input-label {
+#register .description, #login .description, #password-forgot .description, #password-reset .description {
+  font-size: 0.8rem; }
+
+#register .form-wrap label.input-label, #password-reset .form-wrap label.input-label {
   font-weight: bold;
   font-size: 0.8em; }
 
-#register .form-wrap .form-control {
+#register .form-wrap .form-control, #password-reset .form-wrap .form-control {
   padding: 13px;
   margin-bottom: 10px;
   border: none;
@@ -4791,7 +4794,7 @@ body {
   position: relative;
   height: auto; }
 
-#login .form-wrap .form-control {
+#login .form-wrap .form-control, #password-forgot .form-wrap .form-control {
   padding: 13px;
   margin-bottom: 25px;
   border: none;
@@ -4799,7 +4802,13 @@ body {
   position: relative;
   height: auto; }
 
-#register .btn-register, #login .btn-login {
+#register .btn-register, #login .btn-login, #password-forgot .btn-submit, #password-reset .btn-submit {
   margin-top: 25px; }
+
+#login .password-forgot {
+  margin-top: 25px;
+  margin-bottom: 0;
+  font-size: 0.8rem;
+  text-align: right; }
 
 /*# sourceMappingURL=app.css.map */

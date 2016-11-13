@@ -1,15 +1,23 @@
 @extends('layouts.master')
 
-@section('pageTitle', 'ログイン')
-@section('pageDescription', 'ログインページです')
-@section('pageId', 'login')
+@section('pageTitle', 'パスワード再設定')
+@section('pageDescription', 'パスワード再設定ページです')
+@section('pageId', 'password-forgot')
 
 @section('container')
 <div class="container">
   <div class="form-wrap">
-    <form action="{{ route('login') }}" method="POST">
+    <form action="{{ route('password-forgot') }}" method="POST">
       {!! csrf_field() !!}
-      <h2 class="form-signin-heading">ログイン</h2>
+      <h2 class="form-signin-heading">パスワード再設定</h2>
+      <p class="description">
+        入力したメールアドレス宛にパスワード再発行ページをお送りいたします。
+      </p>
+      @if (session('status'))
+        <div class="alert alert-success">
+          {{ session('status') }}
+        </div>
+      @endif
       @if (count($errors) > 0)
       <div class="alert alert-danger" role="alert">
         @foreach ($errors->all() as $error)
@@ -22,10 +30,7 @@
       @endif
       <label for="email" class="sr-only">メールアドレス</label>
       <input type="text" id="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="メールアドレス" autofocus>
-      <label for="password" class="sr-only">パスワード</label>
-      <input type="password" id="password" name="password" class="form-control" placeholder="パスワード">
-      <button class="btn btn-lg btn-primary btn-block btn-login" type="submit">ログイン</button>
-      <p class="password-forgot"><a href="{{ route('password-forgot') }}">パスワードを忘れた方はこちら</a></p>
+      <button class="btn btn-lg btn-primary btn-block btn-submit" type="submit">送信する</button>
     </form>
   </div>
 </div>
