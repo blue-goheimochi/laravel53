@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\DataAccess\Eloquent\User;
+use App\Repositories\UserRepositoryInterface;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -29,14 +29,18 @@ class RegisterController extends Controller
      */
     protected $redirectTo = '/';
 
+    /** @var UserRepositoryInterface */
+    protected $user;
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(UserRepositoryInterface $user)
     {
         $this->middleware('guest');
+        $this->user = $user;
     }
 
     /**
@@ -62,7 +66,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        return $this->user->create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
