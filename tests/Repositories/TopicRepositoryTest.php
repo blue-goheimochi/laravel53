@@ -64,4 +64,33 @@ class TopicRepositoryTest extends \TestCase
         $this->assertEquals('Test Body', $result->body);
         $this->assertEquals(1, $result->status);
     }
+    
+    public function testGetNewTopics()
+    {
+        $topicAliasMock = m::mock('alias:App\DataAccess\Eloquent\Topic');
+
+        $topic = new stdClass;
+        $topic->id      = 1;
+        $topic->user_id = 1;
+        $topic->title   = 'Test Title';
+        $topic->body    = 'Test Body';
+        $topic->status  = 1;
+        
+        $count = 3;
+        $topics = factory(\App\DataAccess\Eloquent\Topic::class, $count)->make();;
+        $topicAliasMock
+            ->shouldReceive('where')->with('status', 1)->once()->andReturn(m::self())->getMock()
+            ->shouldReceive('orderBy')->with('created_at', 'DESC')->once()->andReturn(m::self())->getMock()
+            ->shouldReceive('take')->with($count)->andReturn(m::self())->getMock()
+            ->shouldReceive('get')
+            ->andReturn($topics);
+            
+        $repository = new \App\Repositories\TopicRepository(
+            $topicAliasMock
+        );
+        $result = $repository->getNewTopics($count);
+
+        $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', $result);
+        $this->assertEquals(3, $result->count());
+    }
 }

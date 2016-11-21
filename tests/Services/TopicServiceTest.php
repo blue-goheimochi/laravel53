@@ -37,6 +37,14 @@ class TopicServiceTest extends \TestCase
 
         $this->assertInstanceOf('App\DataAccess\Eloquent\Topic', $topic);
     }
+
+    public function testGetNewTopics()
+    {
+        $topics = $this->service->getNewTopics(5);
+
+        $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', $topics);
+        $this->assertEquals(5, $topics->count());
+    }
 }
 
 class StubTopicServiceRepository implements \App\Repositories\TopicRepositoryInterface
@@ -59,5 +67,15 @@ class StubTopicServiceRepository implements \App\Repositories\TopicRepositoryInt
     public function create(array $params)
     {
         return factory(\App\DataAccess\Eloquent\Topic::class)->make($params);
+    }
+    
+    /**
+     * @param array $params
+     *
+     * @return mixed
+     */
+    public function getNewTopics(int $count)
+    {
+        return factory(\App\DataAccess\Eloquent\Topic::class, $count)->make();
     }
 }

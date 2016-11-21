@@ -1,0 +1,52 @@
+#index {
+  background: #FFFFFF;
+}
+
+#index h2 {
+  margin-bottom: 15px;
+  padding: 0 0 10px;
+  color: #222222;
+  font-weight: bold;
+  font-size: 1.2em;
+  line-height: 150%;
+  border-bottom: 2px solid #dcdcdc;
+}
+
+#index .new-topics .topic {
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+#index .new-topics .title {
+  margin-bottom: 5px;
+  font-weight: bold;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #3097D1;
+}
+
+#index .new-topics .body {
+  margin-bottom: 5px;
+  color: #999999;
+  font-size: 0.7em;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+#index .new-topics .data {
+  margin-bottom: 5px;
+  color: #999999;
+  font-size: 0.7em;
+}
+
+#index .new-topics .data .name {
+  margin-right: 10px;
+  float: left;
+}
+
+#index .new-topics .data .time {
+  float: left;
+}

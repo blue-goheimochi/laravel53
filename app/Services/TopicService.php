@@ -32,6 +32,16 @@ class TopicService
     }
 
     /**
+     * @param int $id
+     * @return Illuminate\Database\Eloquent\Collection
+     */
+    public function getNewTopics(int $count)
+    {
+        $topics = $this->topic->getNewTopics($count);
+        return $topics;
+    }
+
+    /**
      * @param array $params
      * @return \App\DataAccess\Eloquent\Topic
      */
