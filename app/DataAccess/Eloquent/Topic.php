@@ -24,4 +24,9 @@ class Topic extends Model
     {
         return $this->belongsTo('\App\DataAccess\Eloquent\User');
     }
+
+    public function likes()
+    {
+        return $this->hasMany('\App\DataAccess\Eloquent\Like');
+    }
 }
