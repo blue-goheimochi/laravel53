@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Repositories\TopicRepositoryInterface;
+use App\Repositories\LikeRepositoryInterface;
 
 /**
  * Class UserService
@@ -12,13 +13,17 @@ class TopicService
 {
     /** @var TopicRepositoryInterface */
     protected $topic;
+    
+    /** @var LikeRepositoryInterface */
+    protected $like;
 
     /**
      * @param TopicRepositoryInterface $topic
      */
-    public function __construct(TopicRepositoryInterface $topic)
+    public function __construct(TopicRepositoryInterface $topic, LikeRepositoryInterface $like)
     {
         $this->topic = $topic;
+        $this->like  = $like;
     }
 
     /**
@@ -53,5 +58,40 @@ class TopicService
             'body'    => $params['body'],
         ]);
         return $topic;
+    }
+    
+    /**
+     * @param int $user_id
+     * @param int $topic_id
+     * @return \App\DataAccess\Eloquent\Like
+     */
+    public function createLike(int $user_id, int $topic_id)
+    {
+        $like = $this->like->create([
+            'user_id'  => $user_id,
+            'topic_id' => $topic_id
+        ]);
+        return $like;
+    }
+
+    /**
+     * @param int $user_id
+     * @param int $topic_id
+     * @return \App\DataAccess\Eloquent\Like
+     */
+    public function deleteLike(int $user_id, int $topic_id)
+    {
+        $like = $this->like->delete($user_id, $topic_id);
+        return $like;
+    }
+
+    /**
+     * @param int $user_id
+     * @param int $topic_id
+     * @return bool
+     */
+    public function isLiked(int $user_id, int $topic_id)
+    {
+        return $this->like->isLiked($user_id, $topic_id);
     }
 }
