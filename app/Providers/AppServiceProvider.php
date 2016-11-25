@@ -31,5 +31,9 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\TopicRepositoryInterface::class,
             \App\Repositories\TopicRepository::class
         );
+        $this->app->bind(
+            \App\Repositories\LikeRepositoryInterface::class,
+            \App\Repositories\LikeRepository::class
+        );
     }
 }
