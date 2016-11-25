@@ -13,8 +13,10 @@ require('./bootstrap');
  * the application, or feel free to tweak this setup for your needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
+Vue.component('btn-like', require('./components/btnLike.vue'))
 
-const app = new Vue({
-    el: '#app'
-});
+if(document.getElementById("btn-like-wrap")){
+  var likeTopic = new Vue({
+    el: '#btn-like-wrap'
+  })
+}

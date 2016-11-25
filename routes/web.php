@@ -30,4 +30,7 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('passw
 Route::get('topic/new', 'TopicController@getNewTopic')->middleware('auth')->name('new-topic');
 Route::post('topic/new', 'TopicController@postNewTopic')->middleware('auth');
 
+Route::put('topic/like', 'TopicController@createLike');
+Route::delete('topic/like', 'TopicController@deleteLike');
+
 Route::get('topic/{id}', 'TopicController@getTopic');

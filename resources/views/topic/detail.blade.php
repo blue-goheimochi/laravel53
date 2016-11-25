@@ -25,6 +25,9 @@
     <div class="col-md-12">
       <div class="main">
         <p class="body">{!! nl2br(e($topic->body)) !!}</p>
+        <div class="btn-like-wrap clearfix" id="btn-like-wrap">
+          <btn-like count="{{ $topic->likes->count() }}" topic="{{ $topic->id }}" like="{{ $isLiked }}"></btn-like>
+        </div>
       </div>
     </div>
   </div>

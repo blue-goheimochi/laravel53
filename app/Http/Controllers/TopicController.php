@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TopicCreateRequest;
+use App\Http\Requests\LikeCreateDeleteRequest;
 use App\Repositories\TopicRepositoryInterface;
 use App\Repositories\UserRepositoryInterface;
 use App\Services\TopicService;
@@ -36,7 +37,14 @@ class TopicController extends Controller
     public function getTopic(int $id, TopicService $topicService)
     {
         $topic = $topicService->getTopic($id);
-        return view('topic.detail', ['topic' => $topic]);
+        
+        $user = $this->auth->user();
+        $isLiked = false;
+        if( !is_null($user) ) {
+          $isLiked = $topicService->isLiked($user->id, $id);
+        }
+        
+        return view('topic.detail', ['topic' => $topic, 'isLiked' => $isLiked]);
     }
     
     public function getNewTopic()
@@ -62,5 +70,25 @@ class TopicController extends Controller
     public function getCompleteTopic($id)
     {
         return view('topic.complete', ['id' => $id]);
+    }
+  
+    public function createLike(LikeCreateDeleteRequest $request, TopicService $topicService)
+    {
+        $inputs = $request->all();
+        $user   = $this->auth->user();
+  
+        $like = $topicService->createLike($user->id, $inputs['topic_id']);
+  
+        return $like->toJson();
+    }
+  
+    public function deleteLike(LikeCreateDeleteRequest $request, TopicService $topicService)
+    {
+        $inputs = $request->all();
+        $user   = $this->auth->user();
+  
+        $like = $topicService->deleteLike($user->id, $inputs['topic_id']);
+  
+        return $like;
     }
 }

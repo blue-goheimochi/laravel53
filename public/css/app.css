@@ -4949,4 +4949,43 @@ body {
   #topic-detail .main .body {
     font-size: 1em; } }
 
+#topic-detail .btn-like-wrap .btn-like {
+  margin-right: 10px;
+  float: left; }
+
+#topic-detail .btn-like-wrap .btn-like:focus {
+  outline: none; }
+
+#topic-detail .btn-like-wrap .balloon {
+  float: left;
+  border: 1px solid #CCCCCC;
+  border-radius: 0.25rem;
+  position: relative; }
+
+#topic-detail .btn-like-wrap .balloon:before {
+  border-right: 5px solid #CCCCCC;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  content: '';
+  margin-top: -10px;
+  position: absolute;
+  left: -6px;
+  top: 24px; }
+
+#topic-detail .btn-like-wrap .balloon:after {
+  border-right: 4px solid #fff;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  content: '';
+  margin-top: -10px;
+  position: absolute;
+  left: -4px;
+  top: 25px; }
+
+#topic-detail .btn-like-wrap .balloon p {
+  margin: 0;
+  padding: 0.5rem 1rem;
+  display: inline-block;
+  line-height: 1.25; }
+
 /*# sourceMappingURL=app.css.map */
