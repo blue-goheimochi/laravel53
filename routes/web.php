@@ -34,3 +34,13 @@ Route::put('topic/like', 'TopicController@createLike');
 Route::delete('topic/like', 'TopicController@deleteLike');
 
 Route::get('topic/{id}', 'TopicController@getTopic');
+
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+    
+    Route::get('/', 'IndexController@getIndex')->name('index');
+    
+    Route::get('login', 'Auth\LoginController@showLoginForm')->name('admin.login');
+    Route::post('login', 'Auth\LoginController@login');
+    Route::get('logout', 'Auth\LoginController@logout')->name('admin.logout');
+
+});
